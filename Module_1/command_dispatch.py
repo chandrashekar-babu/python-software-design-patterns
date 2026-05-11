@@ -1,23 +1,21 @@
 class CommandDispatch:
     def __init__(self):
-        self.dispatch = {}
+        self.commands = {}
 
-    def for_command(self, command_name):
-        def decorator(fn):
-            self.dispatch[command_name] = fn      
+    def for_command(self, command):
+        def decorator(func):
+            self.commands[command] = func
         return decorator
 
-    def invalid(self, fn):
-        self._invalid_fn = fn
+    def invalid(self, func):
+        self.invalid_fn = func
 
-    def input(self, fn):
-        self._input_fn = fn
+    def input(self, func):
+        self.input_fn = func
 
     def run(self):
         while True:
-            args = self._input_fn()
-            if not args:
-                continue
-            command = args[0]
-            self.dispatch.get(command, self._invalid_fn)(*args)
-    
+            args = self.input_fn()
+            comm = args[0]
+            self.commands.get(comm, self.invalid_fn)(*args)
+
