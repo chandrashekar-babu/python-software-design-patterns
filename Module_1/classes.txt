@@ -1,0 +1,3 @@
+Circle: radius=10
+Square: length=3
+Rectangle: length=4, breadth=5

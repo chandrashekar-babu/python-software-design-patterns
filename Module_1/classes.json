@@ -1,0 +1,4 @@
+{
+ "Car": {"color": "white", "name": "honda"},
+ "Bike": {"color": "green", "name": "yamaha"}
+}
